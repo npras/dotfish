@@ -1,6 +1,6 @@
 ## My Fish shell config setup
 
 
-1. `mkdir -p ~/.dotfiles/fish` && `cd ~/.dotfiles/fish`
-2. `cd ~/.config`
-3. 
+* brew install fish shell and make it default shell (using steps in fish site)
+* `cd ~/.dotfiles` and git clone this repo: `git clone git@github.com:npras/dotfish.git fish`
+* `cd ~/.config` and `ln -s ~/.dotfiles/fish fish`
