@@ -14,7 +14,7 @@ end
 # ##############################
 
 # no welcome message
-set fish_greeting "impact millions"
+set fish_greeting
 
 # ##############################
 
@@ -27,6 +27,14 @@ case Darwin
   set PATH (brew --prefix coreutils)"/libexec/gnubin" $PATH
   set PATH (brew --prefix coreutils)"/libexec/gnuman" $PATH
 end
+
+# ##############################
+
+## chruby
+# (installed via chruby-fish. I think it makes loading fish terminal session slow.
+# find and fix it.)
+source /usr/local/share/chruby/chruby.fish
+source /usr/local/share/chruby/auto.fish
 
 # ##############################
 
@@ -66,6 +74,22 @@ alias gf="git flow"
 alias gdf="git diff "
 alias gdfc="git diff --cached "
 
+# tarsnap
+alias tshelp="echo 'TARSNAP aliases:'; and\
+          echo '================'; and\
+          echo 'tslist   - list the archived backups'; and\
+          echo 'tsstats - stats and size of all backups'; and\
+          echo 'tsbackup - backup files in /opt/backup_here'; and\
+          echo 'tsrestore - restore any of the archives'; and\
+          echo 'tsdelete - delete a backup archive from cloud'; and\
+          echo 'tsdryrun - find how much size the compressed backup of a folder would be if we create a backup'"
+alias tslist='sudo tarsnap --list-archives | sort'
+alias tsstats='sudo tarsnap --print-stats -f "*"'
+alias tsbackup='sudo /root/tarsnap-backup.sh'
+alias tsrestore='sudo tarsnap -x -f '
+alias tsdelete='sudo tarsnap -d -f '
+alias tsdryrun='sudo tarsnap --dry-run -v --no-default-config --print-stats --humanize-numbers -c '
+
 # directories
 alias desk="cd ~/Desktop; and clear; and l"
 alias pub="cd ~/Public; and clear; and l"
@@ -95,5 +119,3 @@ alias dfish='cd ~/.dotfiles/fish; and clear; and l'
 alias drop="cd ~/Dropbox; and clear; and l"
 
 # ##############################
-
-
